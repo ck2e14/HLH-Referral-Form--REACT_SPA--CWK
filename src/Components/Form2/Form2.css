@@ -17,7 +17,9 @@
 }
 
 .formv2 {
-   height: 100vh;
+   height: 80vh;
+   top: 15%;
+   position: relative;
    width: 100vw;
    overflow: auto;
 }
@@ -26,7 +28,7 @@
    display: flex;
    flex-direction: column;
    position: relative;
-   top: 10%;
+   top: 0%;
    transform: translateX(-50%);
    left: 50%;
    min-height: 75vh;
@@ -41,7 +43,7 @@
 .form-flex-itemv2 {
    background: rgb(46, 46, 46);
    border-radius: 5px;
-   margin: 5px;
+   margin: 10px;
    flex: 1;
    border: 2px solid rgb(255, 255, 255);
    border-right: none;
@@ -62,12 +64,12 @@
    transform: translateY(-50%);
 }
 
-.form-details-input {
+.form-detailsv2-input {
    background: rgb(214, 214, 214);
    font-weight: bold;
    color: rgb(0, 0, 0);
    width: 65%;
-   max-height: 100%;
+   height: 90%;
    right: 0%;
    top: 50%;
    font-size: 2vh;
@@ -85,7 +87,7 @@
 }
 
 .submit-btn {
-   position: absolute;
+   position: fixed;
    bottom: 5%;
    right: 1%;
    font-size: 3vh;

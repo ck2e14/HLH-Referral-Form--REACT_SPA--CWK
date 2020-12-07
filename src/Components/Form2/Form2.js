@@ -175,7 +175,7 @@ const Form2 = () => {
                      type='number'
                      onChange={e => setNhsNumber(e.target.value)}
                      value={nhsNumber}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -185,7 +185,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setForename(e.target.value)}
                      value={forename}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -195,7 +195,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setSurname(e.target.value)}
                      value={surname}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -205,7 +205,7 @@ const Form2 = () => {
                      type='date'
                      onChange={e => setDob(e.target.value)}
                      value={dob}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -215,7 +215,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setAddress(e.target.value)}
                      value={address}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -225,7 +225,7 @@ const Form2 = () => {
                      type='email'
                      onChange={e => setEmail(e.target.value)}
                      value={email}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -235,7 +235,7 @@ const Form2 = () => {
                      type='number'
                      onChange={e => setTelephone(e.target.value)}
                      value={telephone}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -245,7 +245,7 @@ const Form2 = () => {
                      type='textarea'
                      onChange={e => setGPDetails(e.target.value)}
                      value={GPDetails}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
             </div>
@@ -259,7 +259,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setReferrerName(e.target.value)}
                      value={referrerName}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -269,7 +269,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setReferrerProfession(e.target.value)}
                      value={referrerProfession}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -279,7 +279,7 @@ const Form2 = () => {
                      type='number'
                      onChange={e => setGMCorHPCNumber(e.target.value)}
                      value={GMCorHPCNumber}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -289,7 +289,7 @@ const Form2 = () => {
                      type='email'
                      onChange={e => setReferrerEmailForReport(e.target.value)}
                      value={referrerEmailForReport}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -299,7 +299,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setReferrerPostalAddressForReport(e.target.value)}
                      value={referrerPostalAddressForReport}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -309,7 +309,7 @@ const Form2 = () => {
                      type='number'
                      onChange={e => setReferrerPhoneNumber(e.target.value)}
                      value={referrerPhoneNumber}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -319,7 +319,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setDate(e.target.value)}
                      value={date}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
             </div>
@@ -333,7 +333,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setModality(e.target.value)}
                      value={modality}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -343,7 +343,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setKnownAllergies(e.target.value)}
                      value={knownAllergies}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -353,7 +353,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setExaminationRequest(e.target.value)}
                      value={examinationRequest}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
 
@@ -363,7 +363,7 @@ const Form2 = () => {
                      type='text'
                      onChange={e => setOtherClinicalDetails(e.target.value)}
                      value={otherClinicalDetails}
-                     className='form-details-input'
+                     className='form-detailsv2-input'
                   />
                </div>
             </div>
