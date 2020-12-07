@@ -38,3 +38,13 @@
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
 }
+
+.toggleForm {
+  position: absolute;
+  color: white;
+  width: fit-content;
+  font-size: 3vh;
+  background: black;
+  z-index: 999;
+  cursor: pointer;
+}

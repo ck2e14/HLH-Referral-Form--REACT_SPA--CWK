@@ -167,15 +167,21 @@ const Form = () => {
          <div className='tab-selector'>
             <h1 className='tab-title noSelect' onClick={() => handleTabClick("patient")}>
                <div className={`tab-number ${patientTabHighlight}`}> &nbsp; 1. &nbsp; </div>{" "}
-               <div className={`tab-value ${patientDetailsComplete}`}>Patient Details</div>
+               <div className={`tab-value ${patientDetailsComplete} ${patientTabHighlight}`}>
+                  Patient Details
+               </div>
             </h1>
             <h1 className='tab-title noSelect' onClick={() => handleTabClick("referrer")}>
                <div className={`tab-number ${referrerTabHighlight}`}> &nbsp; 2. &nbsp; </div>{" "}
-               <div className={`tab-value ${referrerDetailsComplete}`}>Referrer Details</div>
+               <div className={`tab-value ${referrerDetailsComplete} ${referrerTabHighlight}`}>
+                  Referrer Details
+               </div>
             </h1>
             <h1 className='tab-title noSelect' onClick={() => handleTabClick("clinical")}>
                <div className={`tab-number ${clinicalTabHighlight}`}> &nbsp; 3. &nbsp; </div>{" "}
-               <div className={`tab-value ${clinicalDetailsComplete}`}>Clinical Details</div>
+               <div className={`tab-value ${clinicalDetailsComplete}  ${clinicalTabHighlight}`}>
+                  Clinical Details
+               </div>
             </h1>
          </div>
          <div className='details'>
@@ -297,7 +303,7 @@ const Form = () => {
                   </div>
 
                   <div className='form-flex-item' id='GMCorHPCnumber'>
-                     <div className='form-details-label'>GMC or HPC Number</div>
+                     <div className='form-details-label'>GMC/HPC Number</div>
                      <input
                         type='number'
                         onChange={e => setGMCorHPCNumber(e.target.value)}
