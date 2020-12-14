@@ -1,20 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Form2.css";
-// TODO: RUN RegExp validations against the user inputs + don't allow submit without passing
-// TODO: *** BETA *** SENDS PLAIN TEXT MAIL - REQUEST API ENDPOINT TO BE SETUP TO HTTP POST THE DATA TO
-//  Can instead somehow a call to an API that triggers a notif mail to the HLH admins. Or they should really just set up their own n
-//  notifs from webhooks
-// function sendMail() {
-//    var link =
-//       "mailto:admin@heartlunghealth.com" +
-//       "?cc=" +
-//       "&subject=" +
-//       escape("This is my subject") +
-//       "&body=" +
-//       `Patient and Referrer Details  %0D%0A *PATIENT* %0D NHS Number: ${nhsNumber} %0D Surname: ${surname} %0D Forename: ${forename} %0D D.o.B.: ${dob} %0D Email: ${email} %0D Address: ${address} %0D Telephone: ${telephone} %0D GP's Details: ${GPDetails} %0D %0D %0D %0D *REFERRER* %0D test %0D test`;
-//    // escape(document.getElementById("test").value);
-//    window.location.href = link;
-// }
 
 const Form2 = () => {
    // PATIENT DETAILS STATE
@@ -61,29 +46,6 @@ const Form2 = () => {
 
    // This will send the completed form to the HLH backend, when configured.
    const sendDetails = () => {
-      if (
-         !nhsNumber ||
-         !surname ||
-         !forename ||
-         !dob ||
-         !address ||
-         !email ||
-         !telephone ||
-         !GPDetails ||
-         !referrerName ||
-         !referrerProfession ||
-         !GMCorHPCNumber ||
-         !referrerEmailForReport ||
-         !referrerPostalAddressForReport ||
-         !referrerPhoneNumber ||
-         !date ||
-         !modality ||
-         !knownAllergies ||
-         !otherClinicalDetails ||
-         !examinationRequest
-      )
-         return alert("Please ensure all input fields have a value");
-
       console.log(`NHS Number: ${nhsNumber}, 
       SURNAME: ${surname}, 
       FORENAME: ${forename}, 
@@ -92,47 +54,6 @@ const Form2 = () => {
       EMAIL: ${email}, 
       TELEPHONE: ${telephone}, 
       GP DETAILS: ${GPDetails}`);
-
-      // fetch(`https://THIS GOES TO HLH .com`, {
-      //    method: "POST",
-      //    body: JSON.stringify("referralDetailsObject"),
-      // })
-      //    .then(resp => resp.json())
-      //    .then(data => console.log(data));
-   };
-
-   const handleTabClick = tabType => {
-      if (tabType === "patient") {
-         setRenderPatientForm(true);
-         setRenderReferrerForm(false);
-         setRenderClinicalDetailsForm(false);
-      }
-      if (tabType === "referrer") {
-         if (!nhsNumber || !surname || !forename || !dob || !address || !email || !telephone || !GPDetails) {
-            return alert("<<Placeholder Alert>> \nPlease complete all patient information fields");
-         } else {
-            setRenderPatientForm(false);
-            setRenderReferrerForm(true);
-            setRenderClinicalDetailsForm(false);
-         }
-      }
-      if (tabType === "clinical") {
-         if (
-            !referrerName ||
-            !referrerProfession ||
-            !GMCorHPCNumber ||
-            !referrerEmailForReport ||
-            !referrerPostalAddressForReport ||
-            !referrerPhoneNumber ||
-            !date
-         ) {
-            return alert("<<Placeholder Alert>> \nPlease provide all patient and referrer details");
-         } else {
-            setRenderPatientForm(false);
-            setRenderReferrerForm(false);
-            setRenderClinicalDetailsForm(true);
-         }
-      }
    };
 
    let patientDetailsComplete =
