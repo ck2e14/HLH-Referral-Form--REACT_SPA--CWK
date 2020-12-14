@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Form2.css";
 // TODO: RUN RegExp validations against the user inputs + don't allow submit without passing
-// TODO: Active tab must be highlighted in some way
 // TODO: *** BETA *** SENDS PLAIN TEXT MAIL - REQUEST API ENDPOINT TO BE SETUP TO HTTP POST THE DATA TO
 //  Can instead somehow a call to an API that triggers a notif mail to the HLH admins. Or they should really just set up their own n
 //  notifs from webhooks
@@ -156,11 +155,7 @@ const Form2 = () => {
       modality && knownAllergies && examinationRequest && otherClinicalDetails ? "sectionCompleted" : "";
 
    let allDetailsComplete =
-      patientDetailsComplete && referrerDetailsComplete && clinicalDetailsComplete ? "sectionCompleted" : "";
-
-   let patientTabHighlight = renderPatientForm ? "activeTab" : "";
-   let referrerTabHighlight = renderReferrerForm ? "activeTab" : "";
-   let clinicalTabHighlight = renderClinicalDetailsForm ? "activeTab" : "";
+      patientDetailsComplete && referrerDetailsComplete && clinicalDetailsComplete ? "allSectionsCompleted" : "";
 
    return (
       <div className='formv2'>
@@ -370,7 +365,7 @@ const Form2 = () => {
        
          </div>
 
-         <div className={`submit-btn ${allDetailsComplete}`} onClick={() => sendDetails()}>
+         <div className={`submit-btnv2 ${allDetailsComplete}`} onClick={() => sendDetails()}>
             Submit
          </div>
       </div>

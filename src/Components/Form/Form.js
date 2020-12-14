@@ -1,21 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Form.css";
-// TODO: RUN RegExp validations against the user inputs + don't allow submit without passing
-// TODO: Active tab must be highlighted in some way
-// TODO: *** BETA *** SENDS PLAIN TEXT MAIL - REQUEST API ENDPOINT TO BE SETUP TO HTTP POST THE DATA TO
-//  Can instead somehow a call to an API that triggers a notif mail to the HLH admins. Or they should really just set up their own n
-//  notifs from webhooks
-// function sendMail() {
-//    var link =
-//       "mailto:admin@heartlunghealth.com" +
-//       "?cc=" +
-//       "&subject=" +
-//       escape("This is my subject") +
-//       "&body=" +
-//       `Patient and Referrer Details  %0D%0A *PATIENT* %0D NHS Number: ${nhsNumber} %0D Surname: ${surname} %0D Forename: ${forename} %0D D.o.B.: ${dob} %0D Email: ${email} %0D Address: ${address} %0D Telephone: ${telephone} %0D GP's Details: ${GPDetails} %0D %0D %0D %0D *REFERRER* %0D test %0D test`;
-//    // escape(document.getElementById("test").value);
-//    window.location.href = link;
-// }
 
 const Form = () => {
    // PATIENT DETAILS STATE
@@ -60,7 +44,7 @@ const Form = () => {
       }, 4000);
    }, []);
 
-   // This will send the completed form to the HLH backend, when configured.
+   // Send Form Details (will require endpoint or some other destination)
    const sendDetails = () => {
       if (
          !nhsNumber ||
@@ -93,15 +77,9 @@ const Form = () => {
       EMAIL: ${email}, 
       TELEPHONE: ${telephone}, 
       GP DETAILS: ${GPDetails}`);
-
-      // fetch(`https://THIS GOES TO HLH .com`, {
-      //    method: "POST",
-      //    body: JSON.stringify("referralDetailsObject"),
-      // })
-      //    .then(resp => resp.json())
-      //    .then(data => console.log(data));
    };
 
+   // Tab-click handling
    const handleTabClick = tabType => {
       if (tabType === "patient") {
          setRenderPatientForm(true);
@@ -136,11 +114,11 @@ const Form = () => {
       }
    };
 
+   // Add/remove field names to these lists to control which are mandatory fields. Used also for conditional classNames for formatting.
    let patientDetailsComplete =
       nhsNumber && surname && forename && dob && address && email && telephone && GPDetails
          ? "sectionCompleted"
          : "";
-
    let referrerDetailsComplete =
       referrerName &&
       referrerProfession &&
@@ -151,17 +129,15 @@ const Form = () => {
       date
          ? "sectionCompleted"
          : "";
-
    let clinicalDetailsComplete =
       modality && knownAllergies && examinationRequest && otherClinicalDetails ? "sectionCompleted" : "";
-
    let allDetailsComplete =
       patientDetailsComplete && referrerDetailsComplete && clinicalDetailsComplete ? "sectionCompleted" : "";
-
    let patientTabHighlight = renderPatientForm ? "activeTab" : "";
    let referrerTabHighlight = renderReferrerForm ? "activeTab" : "";
    let clinicalTabHighlight = renderClinicalDetailsForm ? "activeTab" : "";
 
+   // JSX Form 
    return (
       <div className='form'>
          <div className='tab-selector'>
@@ -276,6 +252,10 @@ const Form = () => {
                         className='form-details-input'
                      />
                   </div>
+
+                  <div className='next-Btn btn' onClick={() => handleTabClick("referrer")}>
+                     Next
+                  </div>
                </div>
             )}
 
@@ -351,6 +331,12 @@ const Form = () => {
                         className='form-details-input'
                      />
                   </div>
+                  <div className='next-Btn btn' onClick={() => handleTabClick("patient")}>
+                     Back
+                  </div>
+                  <div className='next-Btn btn' onClick={() => handleTabClick("clinical")}>
+                     Next
+                  </div>
                </div>
             )}
 
@@ -395,6 +381,9 @@ const Form = () => {
                         value={otherClinicalDetails}
                         className='form-details-input'
                      />
+                  </div>
+                  <div className='next-Btn btn' onClick={() => handleTabClick("referrer")}>
+                     Back
                   </div>
                </div>
             )}

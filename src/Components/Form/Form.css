@@ -30,14 +30,11 @@
    flex-direction: row;
 }
 
-
-
 .tab-title {
    border: 2px solid rgba(0, 0, 0, 0);
    width: 17vw;
    font-size: 2vh;
    color: rgb(236, 81, 81);
-
    padding-bottom: 5px;
    cursor: pointer;
    transition: transform 0.25s;
@@ -49,6 +46,8 @@
 
 .sectionCompleted {
    color: rgb(0, 255, 128) !important;
+   border-color: black !important;
+   background: rgb(51, 51, 51) !important;
 }
 
 .tab-number {
@@ -57,29 +56,27 @@
    color: rgb(255, 255, 255);
    transition: all 0.5s;
    padding: 2%;
-   /* border: 2px solid rgb(172, 172, 172); */
    border-radius: 80px;
    margin-right: 1.5%;
-   /* transform: translateY(-3px); */
 }
 
 .activeTab {
    border-radius: 5px;
-   /* padding: 2%; */
-   /* margin-right: 1.5%; */
    color: white;
-   /* transform: translateY(-55%); */
 }
 
 .tab-value {
    transition: all 0.5s;
    font-weight: bold;
    font-size: 2.25vh;
+   background: rgb(71, 71, 71);
+   padding: 5px;
+   border-radius: 5px
 }
 
 .tab-title:hover > .tab-value {
    transform: translateX(0px);
-   color: white;
+   color: white ;
 }
 
 /*  UNDERLINE/OVERLINE ANIMS BELOW */
@@ -89,7 +86,7 @@
    width: 100%;
    transform: scaleX(0);
    height: 1px;
-   bottom: 0px;
+   bottom: -10px;
    left: 0;
    background-color: white;
    transform-origin: bottom left;
@@ -109,7 +106,7 @@
    width: 100%;
    transform: scaleX(0);
    height: 1px;
-   top: -5px;
+   top: -10px;
    left: 0;
    background-color: white;
 
@@ -192,16 +189,27 @@
    font-weight: bold;
    color: rgb(153, 49, 49);
    border-radius: 5px;
-   border: 2px solid rgb(49, 49, 49);
+   border: 2px solid rgb(182, 46, 46);
    cursor: pointer;
    transition: all 0.25s;
    padding: 5px;
    z-index: 999999;
-   background: rgb(0, 0, 0);
+   background: rgb(192, 192, 192);
 }
 
-.submit-btn:hover {
-   color: rgb(82, 226, 154);
+.next-Btn {
+   font-size: 3vh;
+   background: rgb(180, 180, 180);
+   display: inline;
+   width: fit-content;
+   position: relative;
+   left: 0;
+   padding: 5px;
+   color: rgb(53, 53, 53);
+   font-weight: bold;
+   cursor: pointer;
+   margin: 10px;
+   border-radius: 5px;
 }
 
 @-webkit-keyframes fade-in {
