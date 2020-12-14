@@ -1,21 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./Form.css";
-// TODO: RUN RegExp validations against the user inputs + don't allow submit without passing
-// TODO: Active tab must be highlighted in some way
-// TODO: *** BETA *** SENDS PLAIN TEXT MAIL - REQUEST API ENDPOINT TO BE SETUP TO HTTP POST THE DATA TO
-//  Can instead somehow a call to an API that triggers a notif mail to the HLH admins. Or they should really just set up their own n
-//  notifs from webhooks
-// function sendMail() {
-//    var link =
-//       "mailto:admin@heartlunghealth.com" +
-//       "?cc=" +
-//       "&subject=" +
-//       escape("This is my subject") +
-//       "&body=" +
-//       `Patient and Referrer Details  %0D%0A *PATIENT* %0D NHS Number: ${nhsNumber} %0D Surname: ${surname} %0D Forename: ${forename} %0D D.o.B.: ${dob} %0D Email: ${email} %0D Address: ${address} %0D Telephone: ${telephone} %0D GP's Details: ${GPDetails} %0D %0D %0D %0D *REFERRER* %0D test %0D test`;
-//    // escape(document.getElementById("test").value);
-//    window.location.href = link;
-// }
 
 const Form = () => {
    // PATIENT DETAILS STATE
@@ -44,11 +28,10 @@ const Form = () => {
    const [otherClinicalDetails, setOtherClinicalDetails] = useState("");
 
    // RENDER CONTROLLERS
+   const [renderSplash, setRenderSplash] = useState(false);
    const [renderPatientForm, setRenderPatientForm] = useState(false);
    const [renderReferrerForm, setRenderReferrerForm] = useState(false);
    const [renderClinicalDetailsForm, setRenderClinicalDetailsForm] = useState(false);
-   const [renderSplash, setRenderSplash] = useState(false);
-   const [activeTab, setActiveTab] = useState("");
 
    useEffect(() => {
       setTimeout(() => {
@@ -60,30 +43,31 @@ const Form = () => {
       }, 4000);
    }, []);
 
-   // This will send the completed form to the HLH backend, when configured.
+   // Send Form Details (requires endpoint or some other destination)
+   // Add or remove presence/contents validations as req
    const sendDetails = () => {
-      if (
-         !nhsNumber ||
-         !surname ||
-         !forename ||
-         !dob ||
-         !address ||
-         !email ||
-         !telephone ||
-         !GPDetails ||
-         !referrerName ||
-         !referrerProfession ||
-         !GMCorHPCNumber ||
-         !referrerEmailForReport ||
-         !referrerPostalAddressForReport ||
-         !referrerPhoneNumber ||
-         !date ||
-         !modality ||
-         !knownAllergies ||
-         !otherClinicalDetails ||
-         !examinationRequest
-      )
-         return alert("Please ensure all input fields have a value");
+      // if (
+      //    !nhsNumber ||
+      //    !surname ||
+      //    !forename ||
+      //    !dob ||
+      //    !address ||
+      //    !email ||
+      //    !telephone ||
+      //    !GPDetails ||
+      //    !referrerName ||
+      //    !referrerProfession ||
+      //    !GMCorHPCNumber ||
+      //    !referrerEmailForReport ||
+      //    !referrerPostalAddressForReport ||
+      //    !referrerPhoneNumber ||
+      //    !date ||
+      //    !modality ||
+      //    !knownAllergies ||
+      //    !otherClinicalDetails ||
+      //    !examinationRequest
+      // )
+      //    return alert("Please ensure all input fields have a value");
 
       console.log(`NHS Number: ${nhsNumber}, 
       SURNAME: ${surname}, 
@@ -93,15 +77,9 @@ const Form = () => {
       EMAIL: ${email}, 
       TELEPHONE: ${telephone}, 
       GP DETAILS: ${GPDetails}`);
-
-      // fetch(`https://THIS GOES TO HLH .com`, {
-      //    method: "POST",
-      //    body: JSON.stringify("referralDetailsObject"),
-      // })
-      //    .then(resp => resp.json())
-      //    .then(data => console.log(data));
    };
 
+   // Tab-click handling & mandatory completions
    const handleTabClick = tabType => {
       if (tabType === "patient") {
          setRenderPatientForm(true);
@@ -109,30 +87,30 @@ const Form = () => {
          setRenderClinicalDetailsForm(false);
       }
       if (tabType === "referrer") {
-         if (!nhsNumber || !surname || !forename || !dob || !address || !email || !telephone || !GPDetails) {
-            return alert("<<Placeholder Alert>> \nPlease complete all patient information fields");
-         } else {
-            setRenderPatientForm(false);
-            setRenderReferrerForm(true);
-            setRenderClinicalDetailsForm(false);
-         }
+         // if (!nhsNumber || !surname || !forename || !dob || !address || !email || !telephone || !GPDetails) {
+         //    return alert("<<Placeholder Alert>> \nPlease complete all patient information fields");
+         // } else {
+         setRenderPatientForm(false);
+         setRenderReferrerForm(true);
+         setRenderClinicalDetailsForm(false);
+         // }
       }
       if (tabType === "clinical") {
-         if (
-            !referrerName ||
-            !referrerProfession ||
-            !GMCorHPCNumber ||
-            !referrerEmailForReport ||
-            !referrerPostalAddressForReport ||
-            !referrerPhoneNumber ||
-            !date
-         ) {
-            return alert("<<Placeholder Alert>> \nPlease provide all patient and referrer details");
-         } else {
-            setRenderPatientForm(false);
-            setRenderReferrerForm(false);
-            setRenderClinicalDetailsForm(true);
-         }
+         // if (
+         //    !referrerName ||
+         //    !referrerProfession ||
+         //    !GMCorHPCNumber ||
+         //    !referrerEmailForReport ||
+         //    !referrerPostalAddressForReport ||
+         //    !referrerPhoneNumber ||
+         //    !date
+         // ) {
+         //    return alert("<<Placeholder Alert>> \nPlease provide all patient and referrer details");
+         // } else {
+         setRenderPatientForm(false);
+         setRenderReferrerForm(false);
+         setRenderClinicalDetailsForm(true);
+         // }
       }
    };
 
@@ -140,7 +118,6 @@ const Form = () => {
       nhsNumber && surname && forename && dob && address && email && telephone && GPDetails
          ? "sectionCompleted"
          : "";
-
    let referrerDetailsComplete =
       referrerName &&
       referrerProfession &&
@@ -151,33 +128,39 @@ const Form = () => {
       date
          ? "sectionCompleted"
          : "";
-
    let clinicalDetailsComplete =
       modality && knownAllergies && examinationRequest && otherClinicalDetails ? "sectionCompleted" : "";
-
    let allDetailsComplete =
       patientDetailsComplete && referrerDetailsComplete && clinicalDetailsComplete ? "sectionCompleted" : "";
-
    let patientTabHighlight = renderPatientForm ? "activeTab" : "";
    let referrerTabHighlight = renderReferrerForm ? "activeTab" : "";
    let clinicalTabHighlight = renderClinicalDetailsForm ? "activeTab" : "";
 
+   // JSX Form
    return (
       <div className='form'>
-         <div className='tab-selector'>
-            <h1 className='tab-title noSelect' onClick={() => handleTabClick("patient")}>
-               <div className={`tab-number ${patientTabHighlight}`}> &nbsp; 1. &nbsp; </div>{" "}
-               <div className={`tab-value ${patientDetailsComplete}`}>Patient Details</div>
-            </h1>
-            <h1 className='tab-title noSelect' onClick={() => handleTabClick("referrer")}>
-               <div className={`tab-number ${referrerTabHighlight}`}> &nbsp; 2. &nbsp; </div>{" "}
-               <div className={`tab-value ${referrerDetailsComplete}`}>Referrer Details</div>
-            </h1>
-            <h1 className='tab-title noSelect' onClick={() => handleTabClick("clinical")}>
-               <div className={`tab-number ${clinicalTabHighlight}`}> &nbsp; 3. &nbsp; </div>{" "}
-               <div className={`tab-value ${clinicalDetailsComplete}`}>Clinical Details</div>
-            </h1>
-         </div>
+         {renderPatientForm || renderClinicalDetailsForm || renderReferrerForm ? (
+            <div className='tab-selector'>
+               <h1 className='tab-title noSelect' onClick={() => handleTabClick("patient")}>
+                  <div className={`tab-number ${patientTabHighlight}`}> &nbsp; 1. &nbsp; </div>{" "}
+                  <div className={`tab-value ${patientDetailsComplete} ${patientTabHighlight}`}>
+                     Patient Details
+                  </div>
+               </h1>
+               <h1 className='tab-title noSelect' onClick={() => handleTabClick("referrer")}>
+                  <div className={`tab-number ${referrerTabHighlight}`}> &nbsp; 2. &nbsp; </div>{" "}
+                  <div className={`tab-value ${referrerDetailsComplete} ${referrerTabHighlight}`}>
+                     Referrer Details
+                  </div>
+               </h1>
+               <h1 className='tab-title noSelect' onClick={() => handleTabClick("clinical")}>
+                  <div className={`tab-number ${clinicalTabHighlight}`}> &nbsp; 3. &nbsp; </div>{" "}
+                  <div className={`tab-value ${clinicalDetailsComplete}  ${clinicalTabHighlight}`}>
+                     Clinical Details
+                  </div>
+               </h1>
+            </div>
+         ) : null}
          <div className='details'>
             {!renderPatientForm && !renderReferrerForm && !renderClinicalDetailsForm && renderSplash && (
                <div className='splash-message'>
@@ -270,6 +253,10 @@ const Form = () => {
                         className='form-details-input'
                      />
                   </div>
+
+                  <div className='next-Btn btn' onClick={() => handleTabClick("referrer")}>
+                     Next
+                  </div>
                </div>
             )}
 
@@ -297,7 +284,7 @@ const Form = () => {
                   </div>
 
                   <div className='form-flex-item' id='GMCorHPCnumber'>
-                     <div className='form-details-label'>GMC or HPC Number</div>
+                     <div className='form-details-label'>GMC/HPC Number</div>
                      <input
                         type='number'
                         onChange={e => setGMCorHPCNumber(e.target.value)}
@@ -345,6 +332,12 @@ const Form = () => {
                         className='form-details-input'
                      />
                   </div>
+                  <div className='next-Btn btn' onClick={() => handleTabClick("patient")}>
+                     Back
+                  </div>
+                  <div className='next-Btn btn' onClick={() => handleTabClick("clinical")}>
+                     Next
+                  </div>
                </div>
             )}
 
@@ -389,6 +382,9 @@ const Form = () => {
                         value={otherClinicalDetails}
                         className='form-details-input'
                      />
+                  </div>
+                  <div className='next-Btn btn' onClick={() => handleTabClick("referrer")}>
+                     Back
                   </div>
                </div>
             )}

@@ -1,40 +1,49 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap");
 
 * {
-  font-family: 'Montserrat', sans-serif;
+   font-family: "Montserrat", sans-serif;
 }
 
 .App {
-  text-align: center;
-  height: 100vh;
-  width: 100vh;
-  position: relative;
+   text-align: center;
+   height: 100vh;
+   width: 100vh;
+   position: relative;
 }
 
 .form-component-wrapper {
-  background-image: url(/src/Assets/placeholder_backgroubnd.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  height: 100vh;
-  width: 100vw;
+   background: rgba(45, 207, 194, 1);
+   background: linear-gradient(to bottom right, rgba(22, 209, 194, 0.459), rgba(30, 170, 189, 0.527));
+   position: relative;
+   height: 100vh;
+   width: 100vw;
 }
 
 .title {
-  position: absolute;
-  z-index: 99;
-  color: rgb(255, 255, 255);
-  left: 2vw;
-  top: 2%;
-  font-size: 6vh;
+   position: absolute;
+   z-index: 99;
+   color: rgb(255, 255, 255);
+   left: 2vw;
+   top: 2%;
+   font-size: 6vh;
 }
 
 .noSelect {
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
+   -webkit-touch-callout: none; /* iOS Safari */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Old versions of Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+   user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
+}
+
+.toggleForm {
+   position: absolute;
+   color: white;
+   width: fit-content;
+   font-size: 3vh;
+   background: black;
+   z-index: 999;
+   cursor: pointer;
 }
