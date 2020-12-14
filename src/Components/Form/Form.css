@@ -79,7 +79,7 @@
    color: white ;
 }
 
-/*  UNDERLINE/OVERLINE ANIMS BELOW */
+/*  UNDERLINE/OVERLINE ANIMS */
 .tab-value::before {
    content: "";
    position: absolute;
@@ -121,7 +121,7 @@
    user-select: none;
    background-color: white;
 }
-/* END OF UNDERLINE/OVERLINE ANIMS */
+/* UNDERLINE/OVERLINE ANIMS */
 
 .details {
    display: flex;
